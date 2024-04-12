@@ -17,7 +17,7 @@
           <div class="col-2" id="menu">
           </div>
             <div class="col-8">
-                <h1>Cadastro de Usuários</h1>
+                <h1>Cadastro de Vendedores</h1>
             </div>
             <div class="col-2 d-flex justify-content-end">
                 <button type="button"
@@ -58,6 +58,7 @@
                 <th>Telefone</th> 
                 <th>Percentual da Comissão</th>
                 <th>Id Cidade</th>
+                <th></th>
 
                 
             </thead>
@@ -88,20 +89,46 @@ aria-hidden="true">
                 id="txtnome" aria-label="Username" aria-describedby="basic-addon1">
             </div>
             <div class="input-group mb-3">
-                <span class="input-group-text" id="basic-addon1">Telefone:</span>
+                <span class="input-group-text" id="basic-addon1">CPF:</span>
                 <input type="text" class="form-control" 
-                id="txttelefone" aria-label="Username" aria-describedby="basic-addon1">
+                id="txtcpf" aria-label="Username" aria-describedby="basic-addon1">
             </div>
             <div class="input-group mb-3">
-                <span class="input-group-text" id="basic-addon1">E-mail:</span>
+                <span class="input-group-text" id="basic-addon1">Logradouro:</span>
                 <input type="text" class="form-control" 
-                id="txtemail" aria-label="Username" aria-describedby="basic-addon1">
+                id="txtlogradouro" aria-label="Username" aria-describedby="basic-addon1">
             </div>
             <div class="input-group mb-3">
-                <span class="input-group-text" id="basic-addon1">Senha:</span>
-                <input type="password" class="form-control" 
-                id="txtsenha" aria-label="Username" aria-describedby="basic-addon1">
+                <span class="input-group-text" id="basic-addon1">Numero:</span>
+                <input type="text" class="form-control" 
+                id="txtnumero" aria-label="Username" aria-describedby="basic-addon1">
             </div>
+            <div class="input-group mb-3">
+              <span class="input-group-text" id="basic-addon1">Bairro:</span>
+              <input type="text" class="form-control" 
+              id="bairro" aria-label="Username" aria-describedby="basic-addon1">
+          </div>
+          <div class="input-group mb-3">
+            <span class="input-group-text" id="basic-addon1">CEP:</span>
+            <input type="text" class="form-control" 
+            id="txtcep" aria-label="Username" aria-describedby="basic-addon1">
+        </div>
+        <div class="input-group mb-3">
+          <span class="input-group-text" id="basic-addon1">Telefone:</span>
+          <input type="text" class="form-control" 
+          id="txttelefone" aria-label="Username" aria-describedby="basic-addon1">
+      </div>
+      <div class="input-group mb-3">
+        <span class="input-group-text" id="basic-addon1">Percentual de Comissão:</span>
+        <input type="text" class="form-control" 
+        id="percomissao" aria-label="Username" aria-describedby="basic-addon1">
+    </div>
+    <div class="input-group mb-3">
+      <span class="input-group-text" id="basic-addon1">ID Cidade:</span>
+      <input type="text" class="form-control" 
+      id="idcidade" aria-label="Username" aria-describedby="basic-addon1">
+  </div>
+
 
         </div>
         <div class="modal-footer">
@@ -140,7 +167,7 @@ aria-hidden="true">
   </div>
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
-    <script src="usuario.js"></script>
+    <script src="vendedor.js"></script>
     <script src="menu.js"></script>
   </body>
 </html>

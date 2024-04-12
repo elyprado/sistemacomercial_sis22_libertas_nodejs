@@ -10,9 +10,9 @@ function novo() {
     idatual = -1;
     const txtnome = document.getElementById("txtnome");
     const txtcpf = document.getElementById("txtcpf");
-    const txtlogadouro = document.getElementById("txtlogadouro");
+    const txtlogradouro = document.getElementById("txtlogradouro");
     const txtnumero = document.getElementById("txtnumero");
-    const txtbairro = document.getElementById("txtbaixo");
+    const txtbairro = document.getElementById("txtbairro");
     const txtcep = document.getElementById("txtcep");
     const txttelefone = document.getElementById("txttelefone");
     const perccomissao = document.getElementById("perccomissao");
@@ -21,9 +21,14 @@ function novo() {
 
     //limpa os campo
     txtnome.value = "";
+    txtcpf.value = "";
+    txtlogradouro.value = "";
+    txtnumero.value = "";
+    txtbairro.value = "";
+    txtcep.value = "";
     txttelefone.value = "";
-    txtemail.value = "";
-    txtsenha.value = "";
+    perccomissao.value = "";
+    idcidade.value = "";
 
     //abre a dialog
     modal.show();
