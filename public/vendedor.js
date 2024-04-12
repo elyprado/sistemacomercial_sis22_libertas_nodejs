@@ -88,7 +88,7 @@ function mostrar(dados) {
             + "<td>" + id + "</td>"
             + "<td>" + dados[i].nome + "</td>"
             + "<td>" + dados[i].cpf + "</td>"
-            + "<td>" + dados[i].lougradouro + "</td>"
+            + "<td>" + dados[i].logradouro + "</td>"
             + "<td>" + dados[i].numero + "</td>"
             + "<td>" + dados[i].bairro + "</td>"
             + "<td>" + dados[i].cep + "</td>"
@@ -139,12 +139,12 @@ function salvar() {
     const dados = {
         nome: txtnome.value,
         cpf: txtcpf.value,
-        lougradouro: txtlogradouro.value, 
+        logradouro: txtlogradouro.value, 
         numero: txtnumero.value,
         bairro: txtbairro.value, 
         cep: txtcep.value,
         telefone: txttelefone.value, 
-        per_comissao: percomissao.value,
+        percomissao: percomissao.value,
         idcidade: idcidade.value 
     }
 

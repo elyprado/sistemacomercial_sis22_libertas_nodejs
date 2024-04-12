@@ -12,25 +12,25 @@ async function connect(){
  }
  
  exports.post = async (req, res, next) => {
-    const conn = await connect();
-    const sql = "INSERT INTO vendedor " +
-                " (nome, cpf, lougradouro, numero, bairro, cep, telefone, perc_comissao, idcidade) " +
-                " VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?,)";
-    const values = [req.body.nome, req.body.cpf, 
-       req.body.lougradouro, req.body.numero, req.body.bairro, req.body.cep, 
-       req.body.telefone, req.body.perc_comissao,req.body.idcidade, ];
-    await conn.query(sql, values);
-    res.status(201).send('Rota POST!');
- };
+   const conn = await connect();
+   const sql = "INSERT INTO vendedor " +
+               "(nome, cpf, logradouro, numero, bairro, cep, telefone, perc_comissao, idcidade) " +
+               "VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)";
+   const values = [req.body.nome, req.body.cpf, 
+       req.body.logradouro, req.body.numero, req.body.bairro, req.body.cep, 
+       req.body.telefone, req.body.perc_comissao, req.body.idcidade];
+   await conn.query(sql, values);
+   res.status(201).send('Rota POST!');
+};
    
  exports.put = async (req, res, next) => {
     let id = req.params.id;
     const conn = await connect();
     const sql = "UPDATE vendedor " +
-                " SET nome = ?, cpf = ?, numero = ?, bairro = ?, cep = ?, telefone = ?, per_comissao = ?, idcidade = ? " +
+                " SET nome = ?, cpf = ?, logradouro = ?, numero = ?, bairro = ?, cep = ?, telefone = ?, per_comissao = ?, idcidade = ? " +
                 " WHERE idvendedor = ?";
     const values = [req.body.nome, req.body.cpf, 
-        req.body.lougradouro, req.body.numero, req.body.bairro, req.body.cep, 
+        req.body.logradouro, req.body.numero, req.body.bairro, req.body.cep, 
         req.body.telefone, req.body.perc_comissao, req.body.idcidade, id];
     await conn.query(sql, values);
     res.status(201).send(`Rota PUT com ID! ${id}`);
