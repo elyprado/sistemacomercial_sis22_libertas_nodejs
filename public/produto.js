@@ -124,7 +124,7 @@ function salvar() {
         precovenda: txtprecovenda.value, 
         saldoestoque: txtsaldoestoque.value,
         codbarras: txtcodbarras.value, 
-        idmarca: txtidmarca.value,
+        idmarca: txtidmarca.value
     }
 
     var url;
