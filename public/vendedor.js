@@ -15,7 +15,7 @@ function novo() {
     const txtbairro = document.getElementById("txtbairro");
     const txtcep = document.getElementById("txtcep");
     const txttelefone = document.getElementById("txttelefone");
-    const perccomissao = document.getElementById("perccomissao");
+    const percomissao = document.getElementById("percomissao");
     const idcidade = document.getElementById("idcidade");
      
 
@@ -27,7 +27,7 @@ function novo() {
     txtbairro.value = "";
     txtcep.value = "";
     txttelefone.value = "";
-    perccomissao.value = "";
+    percomissao.value = "";
     idcidade.value = "";
 
     //abre a dialog
@@ -42,16 +42,25 @@ function alterar(id) {
         //preenche os inputs
         const txtnome = document.getElementById("txtnome");
         const txtcpf = document.getElementById("txtcpf");
-        const txtlogradoro = document.getElementById("txtnumero");
+        const txtlogradouro = document.getElementById("txtlogradouro");
+        const txtnumero = document.getElementById("txtnumero");
         const txtbairro = document.getElementById("txtbairro");
         const txtcep = document.getElementById("txtcep");
         const txttelefone = document.getElementById("txttelefone");
+        const percomissao = document.getElementById("percomissao");
+        const idcidade = document.getElementById("idcidade");
 
 
         txtnome.value = dados.nome;
+        txtcpf.value = dados.cpf;
+        txtlogradouro.value = dados.lougradouro;
+        txtnumero.value = dados.numero;
+        txtbairro.value = dados.bairro;
+        txtcep.value = dados.cep;
         txttelefone.value = dados.telefone;
-        txtemail.value = dados.email;
-        txtsenha.value = dados.senha;
+        percomissao.value = dados.per_comissao;
+        idcidade.value = dados.idcidade;
+        
 
         //mostra a dialog para alterar
         modal.show();
@@ -64,7 +73,7 @@ function listar() {
     const txtpesquisa = document.getElementById("txtpesquisa");
 
 
-    fetch("http://127.0.0.1:3333/usuario?pesquisa=" + txtpesquisa.value)
+    fetch("http://127.0.0.1:3333/vendedor?pesquisa=" + txtpesquisa.value)
     .then(resp => resp.json())
     .then(dados => mostrar(dados));
 }
@@ -74,12 +83,18 @@ function mostrar(dados) {
     lista.innerHTML = "";
     //percorre os dados
     for (var i in dados) {
-        let id = dados[i].idusuario;
+        let id = dados[i].idvendedor;
         lista.innerHTML += "<tr>"
             + "<td>" + id + "</td>"
             + "<td>" + dados[i].nome + "</td>"
+            + "<td>" + dados[i].cpf + "</td>"
+            + "<td>" + dados[i].lougradouro + "</td>"
+            + "<td>" + dados[i].numero + "</td>"
+            + "<td>" + dados[i].bairro + "</td>"
+            + "<td>" + dados[i].cep + "</td>"
             + "<td>" + dados[i].telefone + "</td>"
-            + "<td>" + dados[i].email + "</td>"
+            + "<td>" + dados[i].per_comissao+ "</td>"
+            + "<td>" + dados[i].idcidade + "</td>"
             + "<td>"
             + "<button type='button' class='btn btn-primary' "
             + " onclick='alterar("+id+")'>Alterar</button>"
@@ -94,7 +109,7 @@ function excluir(id) {
     modalExcluir.show();
 }
 function excluirSim() {
-    fetch("http://127.0.0.1:3333/usuario/" + idatual,
+    fetch("http://127.0.0.1:3333/vendedor/" + idatual,
         {
             headers: {
                 'Accept': 'application/json',
@@ -111,27 +126,37 @@ function excluirSim() {
     })
 }
 function salvar() {
-    const txtnome = document.getElementById("txtnome");
-    const txttelefone = document.getElementById("txttelefone");
-    const txtemail = document.getElementById("txtemail");
-    const txtsenha = document.getElementById("txtsenha");
+        const txtnome = document.getElementById("txtnome");
+        const txtcpf = document.getElementById("txtcpf");
+        const txtlogradouro = document.getElementById("txtlogradouro");
+        const txtnumero = document.getElementById("txtnumero");
+        const txtbairro = document.getElementById("txtbairro");
+        const txtcep = document.getElementById("txtcep");
+        const txttelefone = document.getElementById("txttelefone");
+        const percomissao = document.getElementById("percomissao");
+        const idcidade = document.getElementById("idcidade");
 
     const dados = {
         nome: txtnome.value,
-        telefone: txttelefone.value,
-        email: txtemail.value,
-        senha: txtsenha.value 
+        cpf: txtcpf.value,
+        lougradouro: txtlogradouro.value, 
+        numero: txtnumero.value,
+        bairro: txtbairro.value, 
+        cep: txtcep.value,
+        telefone: txttelefone.value, 
+        per_comissao: percomissao.value,
+        idcidade: idcidade.value 
     }
 
     var url;
     var metodo;
     if (idatual<=0) {
         //inserir
-        url = "http://127.0.0.1:3333/usuario";
+        url = "http://127.0.0.1:3333/vendedor";
         metodo = "POST";
     } else {
         //alterar
-        url = "http://127.0.0.1:3333/usuario/" + idatual;
+        url = "http://127.0.0.1:3333/vendedor/" + idatual;
         metodo = "PUT";
     }
     fetch(url,
