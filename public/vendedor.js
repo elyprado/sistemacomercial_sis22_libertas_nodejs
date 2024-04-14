@@ -144,7 +144,7 @@ function salvar() {
         bairro: txtbairro.value, 
         cep: txtcep.value,
         telefone: txttelefone.value, 
-        per_comissao: percomissao.value,
+        percomissao: percomissao.value,
         idcidade: idcidade.value 
     }
 
