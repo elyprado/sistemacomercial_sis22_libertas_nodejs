@@ -36,7 +36,7 @@ function novo() {
 function alterar(id) {
     idatual = id;
     //carregar os dados do id passado por parametro
-    fetch("http://127.0.0.1:3333/usuario/" + id)
+    fetch("http://127.0.0.1:3333/vendedor/" + id)
     .then(resp => resp.json())
     .then(dados => {
         //preenche os inputs
@@ -93,7 +93,7 @@ function mostrar(dados) {
             + "<td>" + dados[i].bairro + "</td>"
             + "<td>" + dados[i].cep + "</td>"
             + "<td>" + dados[i].telefone + "</td>"
-            + "<td>" + dados[i].per_comissao+ "</td>"
+            + "<td>" + dados[i].percomissao+ "</td>"
             + "<td>" + dados[i].idcidade + "</td>"
             + "<td>"
             + "<button type='button' class='btn btn-primary' "
