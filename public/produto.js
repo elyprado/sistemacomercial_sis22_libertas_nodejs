@@ -30,7 +30,7 @@ function novo() {
 function alterar(id) {
     idatual = id;
     //carregar os dados do id passado por parametro
-    fetch("http://127.0.0.1:3333/usuario/" + id)
+    fetch("http://127.0.0.1:3333/produto/" + id)
     .then(resp => resp.json())
     .then(dados => {
         //preenche os inputs
