@@ -15,7 +15,7 @@ function novo() {
     const txtbairro = document.getElementById("txtbairro");
     const txtcep = document.getElementById("txtcep");
     const txttelefone = document.getElementById("txttelefone");
-    const percomissao = document.getElementById("percomissao");
+    const perc_comissao = document.getElementById("perc_comissao");
     const idcidade = document.getElementById("idcidade");
      
 
@@ -27,7 +27,7 @@ function novo() {
     txtbairro.value = "";
     txtcep.value = "";
     txttelefone.value = "";
-    percomissao.value = "";
+    perc_comissao.value = "";
     idcidade.value = "";
 
     //abre a dialog
@@ -47,18 +47,18 @@ function alterar(id) {
         const txtbairro = document.getElementById("txtbairro");
         const txtcep = document.getElementById("txtcep");
         const txttelefone = document.getElementById("txttelefone");
-        const percomissao = document.getElementById("percomissao");
+        const perc_comissao = document.getElementById("perc_comissao");
         const idcidade = document.getElementById("idcidade");
 
 
         txtnome.value = dados.nome;
         txtcpf.value = dados.cpf;
-        txtlogradouro.value = dados.lougradouro;
+        txtlogradouro.value = dados.logradouro;
         txtnumero.value = dados.numero;
         txtbairro.value = dados.bairro;
         txtcep.value = dados.cep;
         txttelefone.value = dados.telefone;
-        percomissao.value = dados.per_comissao;
+        perc_comissao.value = dados.perc_comissao;
         idcidade.value = dados.idcidade;
         
 
@@ -93,7 +93,7 @@ function mostrar(dados) {
             + "<td>" + dados[i].bairro + "</td>"
             + "<td>" + dados[i].cep + "</td>"
             + "<td>" + dados[i].telefone + "</td>"
-            + "<td>" + dados[i].percomissao+ "</td>"
+            + "<td>" + dados[i].perc_comissao+ "</td>"
             + "<td>" + dados[i].idcidade + "</td>"
             + "<td>"
             + "<button type='button' class='btn btn-primary' "
@@ -133,7 +133,7 @@ function salvar() {
         const txtbairro = document.getElementById("txtbairro");
         const txtcep = document.getElementById("txtcep");
         const txttelefone = document.getElementById("txttelefone");
-        const percomissao = document.getElementById("percomissao");
+        const perc_comissao = document.getElementById("perc_comissao");
         const idcidade = document.getElementById("idcidade");
 
     const dados = {
@@ -144,7 +144,7 @@ function salvar() {
         bairro: txtbairro.value, 
         cep: txtcep.value,
         telefone: txttelefone.value, 
-        percomissao: percomissao.value,
+        perc_comissao: perc_comissao.value,
         idcidade: idcidade.value 
     }
 
