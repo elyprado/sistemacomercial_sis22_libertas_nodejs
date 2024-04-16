@@ -32,11 +32,10 @@ function alterar(id) {
         const txtpais = document.getElementById("txtpais");
         const txttelefone = document.getElementById("txttelefone");
 
-
-        txtnomemarca.value = dados.txtnomemarca;
-        txtlogo.value = dados.logo;
-        txtpais.value = dados.pais;
-        txttelefone.value = dados.telefone;       
+        txtnomemarca.value = dados.nomemarca == undefined ? "" : dados.nomemarca;
+        txtlogo.value = dados.logo == undefined ? "" : dados.logo;
+        txtpais.value = dados.pais_origem == undefined ? "" : dados.pais_origem;
+        txttelefone.value = dados.telefone_sac == undefined ? "" : dados.telefone_sac;       
 
         //mostra a dialog para alterar
         modal.show();
@@ -60,12 +59,17 @@ function mostrar(dados) {
     //percorre os dados
     for (var i in dados) {
         let id = dados[i].idmarca;
+        let nomemarca = dados[i].nomemarca == undefined ? "-" : dados[i].nomemarca;
+        let logo = dados[i].logo == undefined ? "-" : dados[i].logo;
+        let pais = dados[i].pais_origem == undefined ? "-" : dados[i].pais_origem;
+        let telefone = dados[i].telefone_sac == undefined ? "-" : dados[i].telefone_sac;
+
         lista.innerHTML += "<tr>"
-            + "<td>" + id + "</td>"
-            + "<td>" + dados[i].nomemarca + "</td>"
-            + "<td>" + dados[i].logo + "</td>"
-            + "<td>" + dados[i].pais + "</td>"
-            + "<td>" + dados[i].telefone + "</td>"
+            + "<td class='colunaID'>" + id + "</td>"
+            + "<td>" + nomemarca + "</td>"
+            + "<td>" + logo + "</td>"
+            + "<td>" + pais + "</td>"
+            + "<td class='colunaTelefone'>" + telefone + "</td>"
             + "<td>"
             + "<button type='button' class='btn btn-primary' "
             + " onclick='alterar("+id+")'>Alterar</button>"
@@ -105,8 +109,8 @@ function salvar() {
     const dados = {
         nomemarca: txtnomemarca.value,
         logo: txtlogo.value,
-        pais: txtpais.value, 
-        telefone: txttelefone.value,
+        pais_origem: txtpais.value, 
+        telefone_sac: txttelefone.value,
     }
 
     var url;
