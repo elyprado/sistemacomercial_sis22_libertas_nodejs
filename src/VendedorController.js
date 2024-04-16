@@ -26,7 +26,7 @@ async function connect(){
  exports.put = async (req, res, next) => {
     let id = req.params.id;
     const conn = await connect();
-    const sql = "UPDATE vendedor " +
+    const sql = " UPDATE vendedor " +
                 " SET nome = ?, cpf = ?, logradouro = ?, numero = ?, bairro = ?, cep = ?, telefone = ?, perc_comissao = ?, idcidade = ? " +
                 " WHERE idvendedor = ?";
     const values = [req.body.nome, req.body.cpf, 
@@ -39,7 +39,7 @@ async function connect(){
   exports.delete = async (req, res, next) => {
     let id = req.params.id;
     const conn = await connect();
-    const sql = "DELETE FROM vendedor " +
+    const sql = " DELETE FROM vendedor " +
                 " WHERE idvendedor = ?";
     const values = [id];
     await conn.query(sql, values);
