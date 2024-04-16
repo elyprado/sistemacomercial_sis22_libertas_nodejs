@@ -158,8 +158,8 @@ function mostrar(dados) {
             + "<td>" + dados[i].quantidade + "</td>"
             + "<td>" + dados[i].valor + "</td>"
             + "<td>" + dados[i].comissao + "</td>"
-            + "<td>" + clientes[(dados[i].idcliente)-1] + "</td>"
             + "<td>" + produtos[(dados[i].idproduto)-1] + "</td>"
+            + "<td>" + clientes[(dados[i].idcliente)-1] + "</td>"
             + "<td>" + vendedores[(dados[i].idvendedor)-1] + "</td>"
             + '<td>' 
             +'<button class="btn btn-outline-success" onclick="alterar('+id+')"> <i class="bi bi-pencil"></i></button > '
