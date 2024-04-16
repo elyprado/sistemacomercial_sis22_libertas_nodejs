@@ -27,7 +27,7 @@ async function connect(){
     let id = req.params.id;
     const conn = await connect();
     const sql = "UPDATE vendedor " +
-                " SET nome = ?, cpf = ?, logradouro = ?, numero = ?, bairro = ?, cep = ?, telefone = ?, per_comissao = ?, idcidade = ? " +
+                " SET nome = ?, cpf = ?, logradouro = ?, numero = ?, bairro = ?, cep = ?, telefone = ?, perc_comissao = ?, idcidade = ? " +
                 " WHERE idvendedor = ?";
     const values = [req.body.nome, req.body.cpf, 
         req.body.logradouro, req.body.numero, req.body.bairro, req.body.cep, 
