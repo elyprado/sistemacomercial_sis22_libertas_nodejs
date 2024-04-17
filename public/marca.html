@@ -9,6 +9,15 @@
             .input-group-text {
                 min-width: 100px;
             }
+            
+            .colunaID {
+                width: 7%;
+                text-align: center;
+            }
+
+            .colunaTelefone {
+                width: 15%;
+            }
         </style>
     </head>
     <body>
@@ -42,11 +51,11 @@
 
             <table class="table table-hover">
                 <thead>
-                    <th>Id</th>
+                    <th class="colunaID">Id</th>
                     <th>Marca</th>
                     <th>Logo</th>
-                    <th>País de Origem</th>
-                    <th>Telefone SAC</th>    
+                    <th>País</th>
+                    <th class="colunaTelefone" style="text-align: center;">Telefone</th>    
                 </thead>
                 <tbody id="lista">
 
@@ -80,12 +89,12 @@
                 <div class="input-group mb-3">
                     <span class="input-group-text" id="basic-addon1">País:</span>
                     <input type="text" class="form-control" 
-                    id="txtpais_origem" aria-label="Username" aria-describedby="basic-addon1">
+                    id="txtpais" aria-label="Username" aria-describedby="basic-addon1">
                 </div>
                 <div class="input-group mb-3">
                     <span class="input-group-text" id="basic-addon1">Telefone:</span>
                     <input type="text" class="form-control" 
-                    id="txttelefone_sac" aria-label="Username" aria-describedby="basic-addon1">
+                    id="txttelefone" aria-label="Username" aria-describedby="basic-addon1">
                 </div>
             </div>
             <div class="modal-footer">

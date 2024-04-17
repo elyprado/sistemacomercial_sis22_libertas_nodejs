@@ -18,8 +18,12 @@ exports.post = async (req, res, next) => {
     const sql = "INSERT INTO marca " +
                 " (nomemarca, logo, pais_origem, telefone_sac) " +
                 " VALUES (?, ?, ?, ?)";
-    const values = [req.body.nomemarca, req.body.logo, 
-        req.body.pais_origem, req.body.telefone_sac];
+    const values = [
+        req.body.nomemarca, 
+        req.body.logo, 
+        req.body.pais_origem, 
+        req.body.telefone_sac
+    ];
     await conn.query(sql, values);
     res.status(201).send('Rota POST!');
 };
@@ -30,8 +34,13 @@ exports.put = async (req, res, next) => {
     const sql = "UPDATE marca " +
                 " SET nomemarca = ?, logo = ?, pais_origem = ?, telefone_sac =? " +
                 " WHERE idmarca = ?";
-    const values = [req.body.nomemarca, req.body.logo, 
-        req.body.pais_origem, req.body.telefone_sac, id];
+    const values = [
+        req.body.nomemarca, 
+        req.body.logo, 
+        req.body.pais_origem, 
+        req.body.telefone_sac, 
+        id
+    ];
     await conn.query(sql, values);
     res.status(201).send(`Rota PUT com ID! ${id}`);
 };

@@ -31,7 +31,7 @@ exports.put = async (req, res, next) => {
     console.log(id)
     const sql = "UPDATE venda SET numeronf=?, data=?, quantidade=? ,valor=?, comissao=?, idcliente=?, idproduto=?, idvendedor=? WHERE idvenda=?";
     
-    const values = [req.body.numeronf, req.body.data, req.body.quantidade, req.body.valor, req.body.comissao, req.body.idcliente, req.body.idproduto. req.body.idvendedor];
+    const values = [req.body.numeronf, req.body.data, req.body.quantidade, req.body.valor, req.body.comissao, req.body.idcliente, req.body.idproduto, req.body.idvendedor, id];
     console.log(values)
     await conn.query(sql, values)
     console.log(id)

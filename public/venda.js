@@ -28,6 +28,27 @@ function formatarData(data) {
     return dia + '/' + mes + '/' + ano;
 }
 
+function formatarBD(data) {
+    // Converte a string de data para um objeto Date
+    var dataObjeto = new Date(data);
+
+    // Extrai dia, mês e ano
+    var dia = dataObjeto.getDate();
+    var mes = dataObjeto.getMonth() + 1; // Mês é base zero, então adicionamos 1
+    var ano = dataObjeto.getFullYear();
+
+    // Formata os valores para dois dígitos, se necessário
+    if (dia < 10) {
+        dia = '0' + dia;
+    }
+    if (mes < 10) {
+        mes = '0' + mes;
+    }
+
+    // Retorna a data formatada no formato dd/mm/aaaa
+    return ano + '-' + mes + '-' + dia;
+}
+
 
 function novo() {
     idatual = -1;
@@ -39,6 +60,7 @@ function novo() {
     const txtIdcliente = document.getElementById("txtIdcliente");
     const txtIdproduto = document.getElementById("txtIdproduto");
     const txtIdvendedor = document.getElementById("txtIdvendedor");
+    console.log(txtData.value)
     modalTitle.innerHTML = '<i class="bi bi-receipt"></i>&nbsp;&nbsp;Cadastrar nova venda'
 
     
@@ -71,8 +93,10 @@ function alterar(id) {
             const txtIdproduto = document.getElementById("txtIdproduto");
             const txtIdvendedor = document.getElementById("txtIdvendedor");
            
+
+
             txtNumeronf.value = dados.numeronf;
-            txtData.value = formatarData(dados.data);
+            txtData.value = formatarBD(dados.data);
             txtQuantidade.value = dados.quantidade;
             txtValor.value = dados.valor;
             txtComissao.value = dados.comissao;
@@ -98,8 +122,26 @@ function listar() {
     
 }
 
+
+
 function mostrar(dados) {
     const lista = document.getElementById("lista");
+
+    const produtos = ["Coca-Cola", "Pepsi", "Doritos", "Fandangos"]
+
+    const clientes = [
+    "Jéssica Teixeira",
+    "Julio Costa",
+    "Amanda Pádua",
+    "Weligton Medeiros"
+    ];
+
+    const vendedores = [
+    "Walter Costa",
+    "Jefferson Silva",
+    "Maria Pereira",
+    "Helena Prado"
+];
     //limpa lista
     lista.innerHTML = "";
     // percorre dados
@@ -116,9 +158,9 @@ function mostrar(dados) {
             + "<td>" + dados[i].quantidade + "</td>"
             + "<td>" + dados[i].valor + "</td>"
             + "<td>" + dados[i].comissao + "</td>"
-            + "<td>" + dados[i].idcliente + "</td>"
-            + "<td>" + dados[i].idproduto + "</td>"
-            + "<td>" + dados[i].idvendedor + "</td>"
+            + "<td>" + produtos[(dados[i].idproduto)-1] + "</td>"
+            + "<td>" + clientes[(dados[i].idcliente)-1] + "</td>"
+            + "<td>" + vendedores[(dados[i].idvendedor)-1] + "</td>"
             + '<td>' 
             +'<button class="btn btn-outline-success" onclick="alterar('+id+')"> <i class="bi bi-pencil"></i></button > '
             + '<button class="btn btn-outline-danger" onclick="excluir('+id+')"><i class="bi bi-trash"></i></button>'
