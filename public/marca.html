@@ -17,6 +17,12 @@
 
             .colunaTelefone {
                 width: 15%;
+                text-align: center;
+            }
+
+            .colunaBotoes {
+                width: 15%;
+                text-align: center;
             }
         </style>
     </head>
@@ -52,10 +58,11 @@
             <table class="table table-hover">
                 <thead>
                     <th class="colunaID">Id</th>
-                    <th>Marca</th>
-                    <th>Logo</th>
-                    <th>País</th>
-                    <th class="colunaTelefone" style="text-align: center;">Telefone</th>    
+                    <th colspan="2">Marca</th>
+                    <th colspan="2" style="text-align: center;">Logo</th>
+                    <th colspan="2">País</th>
+                    <th class="colunaTelefone" style="text-align: center;">Telefone</th>  
+                    <th class="colunaBotoes"></th> 
                 </thead>
                 <tbody id="lista">
 
@@ -94,7 +101,7 @@
                 <div class="input-group mb-3">
                     <span class="input-group-text" id="basic-addon1">Telefone:</span>
                     <input type="text" class="form-control" 
-                    id="txttelefone" aria-label="Username" aria-describedby="basic-addon1">
+                    id="txttelefone" aria-label="Username" aria-describedby="basic-addon1" placeholder="(00) 0 0000-0000">
                 </div>
             </div>
             <div class="modal-footer">
@@ -127,6 +134,11 @@
     </div>
 
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.mask/1.14.11/jquery.mask.min.js"></script>
+        <script type="text/javascript">
+            $("#txttelefone").mask("(00) 0 0000-0000");
+        </script>
         <script src="marca.js"></script>
         <script src="menu.js"></script>
     </body>

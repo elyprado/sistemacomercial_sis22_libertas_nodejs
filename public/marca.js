@@ -66,15 +66,15 @@ function mostrar(dados) {
 
         lista.innerHTML += "<tr>"
             + "<td class='colunaID'>" + id + "</td>"
-            + "<td>" + nomemarca + "</td>"
-            + "<td>" + logo + "</td>"
-            + "<td>" + pais + "</td>"
+            + "<td colspan='2'>" + nomemarca + "</td>"
+            + "<td colspan='2' style='text-align: center;'><img src='" + logo + "' width='40' height='40'></td>"
+            + "<td colspan='2'>" + pais + "</td>"
             + "<td class='colunaTelefone'>" + telefone + "</td>"
-            + "<td>"
+            + "<td class='colunaBotoes'>"
             + "<button type='button' class='btn btn-primary' "
-            + " onclick='alterar("+id+")'>Alterar</button>"
-            + "<button type='button' class='btn btn-danger' "
-            + " onclick='excluir("+id+")'>Excluir</button>"
+            + " onclick='alterar("+id+")'><img src='https://cdn-icons-png.freepik.com/512/565/565317.png' width='20' height='20' style='filter: invert(1);'></button>"
+            + "<button type='button' class='btn btn-danger' style='margin-left: 10px'"
+            + " onclick='excluir("+id+")'><img src='https://icons.veryicon.com/png/o/miscellaneous/management-console-icon-update-0318/material-delete.png' width='20' height='20' style='filter: invert(1);'></button>"
             + "</td>"
             + "</tr>";
     }
