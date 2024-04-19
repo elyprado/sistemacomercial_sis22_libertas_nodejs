@@ -51,7 +51,7 @@ async function connect(){
      const pesquisa = req.query.pesquisa;
      const sql = "SELECT * FROM vendedor " +
                  " WHERE nome like ?" +
-                 " ORDER BY idvendedor";
+                 " ORDER BY nome ";
      const values = ["%" + pesquisa + "%"];
      const [rows] = await conn.query(sql, values);
      res.status(200).send(rows);
