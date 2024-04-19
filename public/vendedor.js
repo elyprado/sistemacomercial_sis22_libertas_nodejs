@@ -96,10 +96,10 @@ function mostrar(dados) {
             + "<td>" + dados[i].perc_comissao+ "</td>"
             + "<td>" + dados[i].idcidade + "</td>"
             + "<td>"
-            + "<button type='button' class='btn btn-primary' "
-            + " onclick='alterar("+id+")'>Alterar</button>"
+            + "<button type='button' class='btn btn-dark' "
+            + " onclick='alterar("+id+")'><i class='fa-solid fa-pencil'></i></button></button>"
             + "<button type='button' class='btn btn-danger' "
-            + " onclick='excluir("+id+")'>Excluir</button>"
+            + " onclick='excluir("+id+")'><i class='fa-solid fa-trash'></i></button></button>"
             + "</td>"
             + "</tr>";
     }
