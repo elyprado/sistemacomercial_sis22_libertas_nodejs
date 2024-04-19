@@ -112,7 +112,7 @@ function alterar(id) {
 
 function listar() {
     const lista = document.getElementById("lista");
-    // lista.innerHTML='<tr><td colspan="5" ><div style="display: flex;flex-direction: row;">  <img src="https://i.gifer.com/ZKZg.gif" alt="" srcset="" height="30px">  <h3 style="margin-left: 10px;">Carregando</h3></tr></td>'
+    lista.innerHTML='<tr><td colspan="5" ><div style="display: flex;flex-direction: row;">  <div class="spinner-border text-primary" role="status"><span class="visually-hidden">Loading...</span></div> <h3 style="margin-left: 10px;">Carregando</h3></tr></td>'
     txtpesquisa = document.getElementById("txtpesquisa");
 
 
@@ -124,40 +124,45 @@ function listar() {
 
 
 
+
 function mostrar(dados) {
     const lista = document.getElementById("lista");
 
+    
     const produtos = ["Coca-Cola", "Pepsi", "Doritos", "Fandangos"]
-
+    
     const clientes = [
-    "Jéssica Teixeira",
-    "Julio Costa",
+        "Jéssica Teixeira",
+        "Julio Costa",
     "Amanda Pádua",
     "Weligton Medeiros"
     ];
-
+    
     const vendedores = [
-    "Walter Costa",
-    "Jefferson Silva",
-    "Maria Pereira",
-    "Helena Prado"
-];
+        "Walter Costa",
+        "Jefferson Silva",
+        "Maria Pereira",
+        "Helena Prado"
+    ];
     //limpa lista
     lista.innerHTML = "";
     // percorre dados
-
+    
     //***********para vendas******** 
     for (var i in dados) {
+        const valorFormatado = "R$" + dados[i].valor.toLocaleString('pt-BR', {minimumFractionDigits: 2});
+        const comissaoFormatada = "R$" + dados[i].comissao.toLocaleString('pt-BR', {minimumFractionDigits: 2});
+
         let id = dados[i].idvenda;
 
 
         lista.innerHTML += "<tr>"
-            + "<td>" + dados[i].idvenda + "</td>"
-            + "<td>" + dados[i].numeronf + "</td>"
+        + "<td>" + dados[i].idvenda + "</td>"
+        + "<td>" + dados[i].numeronf + "</td>"
             + "<td>" + formatarData(dados[i].data) + "</td>"
             + "<td>" + dados[i].quantidade + "</td>"
-            + "<td>" + dados[i].valor + "</td>"
-            + "<td>" + dados[i].comissao + "</td>"
+            +"<td>" + valorFormatado + "</td>"
+            +"<td>" + comissaoFormatada + "</td>"
             + "<td>" + produtos[(dados[i].idproduto)-1] + "</td>"
             + "<td>" + clientes[(dados[i].idcliente)-1] + "</td>"
             + "<td>" + vendedores[(dados[i].idvendedor)-1] + "</td>"
@@ -245,3 +250,25 @@ function salvar() {
 }
 
 listar();
+
+
+
+const alertPlaceholder = document.getElementById('liveAlertPlaceholder')
+const appendAlert = (message, type) => {
+  const wrapper = document.createElement('div')
+  wrapper.innerHTML = [
+    `<div class="alert alert-${type} alert-dismissible" role="alert">`,
+    `   <div>${message}</div>`,
+    '   <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>',
+    '</div>'
+  ].join('')
+
+  alertPlaceholder.append(wrapper)
+}
+
+const alertTrigger = document.getElementById('liveAlertBtn')
+if (alertTrigger) {
+  alertTrigger.addEventListener('click', () => {
+    appendAlert('Nice, you triggered this alert message!', 'success')
+  })
+}
