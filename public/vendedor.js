@@ -93,7 +93,7 @@ function mostrar(dados) {
             + "<td>" + dados[i].bairro + "</td>"
             + "<td>" + dados[i].cep + "</td>"
             + "<td>" + dados[i].telefone + "</td>"
-            + "<td>" + dados[i].perc_comissao+ "</td>"
+            + "<td>" + dados[i].perc_comissao+ "%" +"</td>"
             + "<td>" + dados[i].idcidade + "</td>"
             + "<td>"
             + "<button type='button' class='btn btn-dark' "
