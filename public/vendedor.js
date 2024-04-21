@@ -6,6 +6,8 @@ const modal = new bootstrap.Modal(
 const modalExcluir = new bootstrap.Modal(
     document.getElementById('modalExcluir'));
 
+const modalTitle = document.getElementById("exampleModalLabel");
+
 function novo() {
     idatual = -1;
     const txtnome = document.getElementById("txtnome");
@@ -17,7 +19,7 @@ function novo() {
     const txttelefone = document.getElementById("txttelefone");
     const perc_comissao = document.getElementById("perc_comissao");
     const idcidade = document.getElementById("idcidade");
-     
+    modalTitle.innerHTML = 'Cadastrar Vendedor <i class="fa-solid fa-user-pen"></i>'
 
     //limpa os campo
     txtnome.value = "";
@@ -49,7 +51,7 @@ function alterar(id) {
         const txttelefone = document.getElementById("txttelefone");
         const perc_comissao = document.getElementById("perc_comissao");
         const idcidade = document.getElementById("idcidade");
-
+        modalTitle.innerHTML = 'Alterar Vendedor <i class="fa-solid fa-pen-to-square"></i>'
 
         txtnome.value = dados.nome;
         txtcpf.value = dados.cpf;
@@ -85,20 +87,22 @@ function mostrar(dados) {
     for (var i in dados) {
         let id = dados[i].idvendedor;
         lista.innerHTML += "<tr>"
-            + "<td>" + id + "</td>"
-            + "<td>" + dados[i].nome + "</td>"
-            + "<td>" + dados[i].cpf + "</td>"
-            + "<td>" + dados[i].logradouro + "</td>"
-            + "<td>" + dados[i].numero + "</td>"
-            + "<td>" + dados[i].bairro + "</td>"
-            + "<td>" + dados[i].cep + "</td>"
-            + "<td>" + dados[i].telefone + "</td>"
-            + "<td>" + dados[i].perc_comissao+ "%" +"</td>"
-            + "<td>" + dados[i].idcidade + "</td>"
+            + "<td class='cID'>" + id + "</td>"
+            + "<td class='cNOME'>" + dados[i].nome + "</td>"
+            + "<td class='cCPF'>" + dados[i].cpf + "</td>"
+            + "<td class='cLOG'>" + dados[i].logradouro + "</td>"
+            + "<td class='cNUM'>" + dados[i].numero + "</td>"
+            + "<td class='cBAIRRO'>" + dados[i].bairro + "</td>"
+            + "<td class='cCEP'>" + dados[i].cep + "</td>"
+            + "<td class='cTELEFONE'>" + dados[i].telefone + "</td>"
+            + "<td class='cPERC'>" + dados[i].perc_comissao+ "%" +"</td>"
+            + "<td class='cIDCID'>" + dados[i].idcidade + "</td>"
             + "<td>"
             + "<button type='button' class='btn btn-dark' "
             + " onclick='alterar("+id+")'><i class='fa-solid fa-pencil'></i></button></button>"
-            + "<button type='button' class='btn btn-danger' "
+            + "</td>"
+            + "<td>"
+            + "<button type='button' class='btn btn-danger' style='margin-left:10px'"
             + " onclick='excluir("+id+")'><i class='fa-solid fa-trash'></i></button></button>"
             + "</td>"
             + "</tr>";
@@ -178,3 +182,4 @@ function salvar() {
 }
 
 listar();
+
