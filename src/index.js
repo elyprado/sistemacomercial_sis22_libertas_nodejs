@@ -5,8 +5,10 @@ const ProdutoRoute = require('./ProdutoRoute');
 const MarcaRoute = require('./MarcaRoute')
 const VendaRoute = require('./VendaRoute');
 const CompraRoute = require('./CompraRoute');
+const CaixaRoute = require('./CaixaRoute');
 module.exports = (app) => {
    UsuarioRoute(app)
+   CaixaRoute(app)
    VendedorRoute(app)
    ProdutoRoute(app)
    MarcaRoute(app)
