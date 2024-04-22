@@ -5,7 +5,9 @@ const ProdutoRoute = require('./ProdutoRoute');
 const MarcaRoute = require('./MarcaRoute')
 const VendaRoute = require('./VendaRoute');
 const CompraRoute = require('./CompraRoute');
+const ClienteRoute = require('./ClienteRoute');
 module.exports = (app) => {
+   ClienteRoute(app)
    UsuarioRoute(app)
    VendedorRoute(app)
    ProdutoRoute(app)
