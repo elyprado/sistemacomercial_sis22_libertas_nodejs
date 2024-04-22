@@ -14,9 +14,9 @@ async function connect(){
  exports.post = async (req, res, next) => {
    const conn = await connect();
    const sql = "INSERT INTO cliente " +
-               "(nome, cpf, logradouro, numero, bairro, cep, telefone) " +
-               "VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)";
-   const values = [req.body.nome, req.body.cpf, 
+               "(idcliente, nome, cpf, logradouro, numero, bairro, cep, telefone) " +
+               "VALUES (?, ?, ?, ?, ?, ?, ?, ?)";
+   const values = [req.body.idcliente, req.body.nome, req.body.cpf, 
        req.body.logradouro, req.body.numero, req.body.bairro, req.body.cep, 
        req.body.telefone];
    await conn.query(sql, values);
@@ -31,7 +31,7 @@ async function connect(){
                 " WHERE idcliente = ?";
     const values = [req.body.nome, req.body.cpf, 
         req.body.logradouro, req.body.numero, req.body.bairro, req.body.cep, 
-        req.body.telefone];
+        req.body.telefone, id];
     await conn.query(sql, values);
     res.status(201).send(`Rota PUT com ID! ${id}`);
   };
