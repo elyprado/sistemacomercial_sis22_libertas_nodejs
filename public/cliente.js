@@ -15,7 +15,7 @@ function novo() {
     const txtbairro = document.getElementById("txtbairro");
     const txtcep = document.getElementById("txtcep");
     const txttelefone = document.getElementById("txttelefone");
-     
+
 
     //limpa os campo
     txtnome.value = "";
@@ -33,29 +33,29 @@ function alterar(id) {
     idatual = id;
 
     fetch("http://127.0.0.1:3333/cliente/" + id)
-    .then(resp => resp.json())
-    .then(dados => {
- 
-
-        const txtnome = document.getElementById("txtnome");
-        const txtcpf = document.getElementById("txtcpf");
-        const txtlogradouro = document.getElementById("txtlogradouro");
-        const txtnumero = document.getElementById("txtnumero");
-        const txtbairro = document.getElementById("txtbairro");
-        const txtcep = document.getElementById("txtcep");
-        const txttelefone = document.getElementById("txttelefone");
+        .then(resp => resp.json())
+        .then(dados => {
 
 
-        txtnome.value = dados.nome;
-        txtcpf.value = dados.cpf;
-        txtlogradouro.value = dados.lougradouro;
-        txtnumero.value = dados.numero;
-        txtbairro.value = dados.bairro;
-        txtcep.value = dados.cep;
-        txttelefone.value = dados.telefone;
-        
-        modal.show();
-    });
+            const txtnome = document.getElementById("txtnome");
+            const txtcpf = document.getElementById("txtcpf");
+            const txtlogradouro = document.getElementById("txtlogradouro");
+            const txtnumero = document.getElementById("txtnumero");
+            const txtbairro = document.getElementById("txtbairro");
+            const txtcep = document.getElementById("txtcep");
+            const txttelefone = document.getElementById("txttelefone");
+
+
+            txtnome.value = dados.nome;
+            txtcpf.value = dados.cpf;
+            txtlogradouro.value = dados.logradouro;
+            txtnumero.value = dados.numero;
+            txtbairro.value = dados.bairro;
+            txtcep.value = dados.cep;
+            txttelefone.value = dados.telefone;
+
+            modal.show();
+        });
 }
 function listar() {
     const lista = document.getElementById("lista");
@@ -65,8 +65,8 @@ function listar() {
 
 
     fetch("http://127.0.0.1:3333/cliente?pesquisa=" + txtpesquisa.value)
-    .then(resp => resp.json())
-    .then(dados => mostrar(dados));
+        .then(resp => resp.json())
+        .then(dados => mostrar(dados));
 }
 function mostrar(dados) {
     const lista = document.getElementById("lista");
@@ -86,9 +86,9 @@ function mostrar(dados) {
 
             + "<td>"
             + "<button type='button' class='btn btn-primary' "
-            + " onclick='alterar("+id+")'>Alterar</button>"
+            + " onclick='alterar(" + id + ")'>Alterar</button>"
             + "<button type='button' class='btn btn-danger' "
-            + " onclick='excluir("+id+")'>Excluir</button>"
+            + " onclick='excluir(" + id + ")'>Excluir</button>"
             + "</td>"
             + "</tr>";
     }
@@ -103,40 +103,54 @@ function excluirSim() {
             headers: {
                 'Accept': 'application/json',
                 'Content-Type': 'application/json'
-                },
-            method: "DELETE", 
+            },
+            method: "DELETE",
             body: ""
         }
     ).then(() => {
-        
+
         modalExcluir.hide();
         listar();
     })
 }
-function salvar() {
-        const txtnome = document.getElementById("txtnome");
-        const txtcpf = document.getElementById("txtcpf");
-        const txtlogradouro = document.getElementById("txtlogradouro");
-        const txtnumero = document.getElementById("txtnumero");
-        const txtbairro = document.getElementById("txtbairro");
-        const txtcep = document.getElementById("txtcep");
-        const txttelefone = document.getElementById("txttelefone");
+async function salvar() {
+    const txtnome = document.getElementById("txtnome");
+    const txtcpf = document.getElementById("txtcpf");
+    const txtlogradouro = document.getElementById("txtlogradouro");
+    const txtnumero = document.getElementById("txtnumero");
+    const txtbairro = document.getElementById("txtbairro");
+    const txtcep = document.getElementById("txtcep");
+    const txttelefone = document.getElementById("txttelefone");
+    const lista = document.getElementById("lista");
+    lista.innerHTML = "<tr><td colspan=5>Carregando...</td></tr>";
 
+    const txtpesquisa = document.getElementById("txtpesquisa");
+
+    var idNovo = 0
+    var todosCl = await fetch("http://127.0.0.1:3333/cliente?pesquisa=" + txtpesquisa.value)
+        .then(async (resp) => {return await resp.json()})
+
+    for(i of todosCl){
+        if(i.idcliente > idNovo){
+            idNovo = i.idcliente + 1
+        }
+    }
 
     const dados = {
+        idcliente: idNovo,
         nome: txtnome.value,
         cpf: txtcpf.value,
-        logradouro: txtlogradouro.value, 
+        logradouro: txtlogradouro.value,
         numero: txtnumero.value,
-        bairro: txtbairro.value, 
+        bairro: txtbairro.value,
         cep: txtcep.value,
-        telefone: txttelefone.value, 
+        telefone: txttelefone.value,
 
     }
 
     var url;
     var metodo;
-    if (idatual<=0) {
+    if (idatual <= 0) {
         url = "http://127.0.0.1:3333/cliente";
         metodo = "POST";
     } else {
@@ -148,8 +162,8 @@ function salvar() {
             headers: {
                 'Accept': 'application/json',
                 'Content-Type': 'application/json'
-                },
-            method: metodo, 
+            },
+            method: metodo,
             body: JSON.stringify(dados)
         }
     ).then(() => {
