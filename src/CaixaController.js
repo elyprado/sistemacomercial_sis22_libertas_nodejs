@@ -16,7 +16,7 @@ async function connect() {
 exports.post = async (req, res, next) => {
     const conn = await connect();
     const sql = "INSERT INTO caixa " +
-        " (data, descricao, valor, debitocred) " +
+        " (data, descricao, valor, debitocredito) " +
         " VALUES (?, ?, ?, ?)";
     const values = [req.body.data, req.body.descricao,
     req.body.valor, req.body.debitocred];
