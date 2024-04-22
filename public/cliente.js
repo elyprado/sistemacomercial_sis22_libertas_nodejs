@@ -84,9 +84,9 @@ function mostrar(dados) {
             + "<td>" + dados[i].cep + "</td>"
             + "<td>" + dados[i].telefone + "</td>"
 
-            + "<td>"
+            + "<td style='display:flex'>"
             + "<button type='button' class='btn btn-primary' "
-            + " onclick='alterar(" + id + ")'>Alterar</button>"
+            + " onclick='alterar(" + id + ")' style='margin-right: 5px;'>Alterar</button>"
             + "<button type='button' class='btn btn-danger' "
             + " onclick='excluir(" + id + ")'>Excluir</button>"
             + "</td>"
@@ -130,7 +130,7 @@ async function salvar() {
     var todosCl = await fetch("http://127.0.0.1:3333/cliente?pesquisa=" + txtpesquisa.value)
         .then(async (resp) => { return await resp.json() })
 
-    if (todosCl.lenght > 0) {
+    if (todosCl.length > 0) {
         for (i of todosCl) {
             if (i.idcliente > idNovo) {
                 idNovo = i.idcliente + 1
