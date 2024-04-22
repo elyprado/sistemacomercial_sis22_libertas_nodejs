@@ -7,6 +7,7 @@ const VendaRoute = require('./VendaRoute');
 const CompraRoute = require('./CompraRoute');
 const CaixaRoute = require('./CaixaRoute');
 const ClienteRoute = require('./ClienteRoute');
+const ContasReceberRoute = require('./ContasReceberRoute')
 module.exports = (app) => {
    ClienteRoute(app)
    UsuarioRoute(app)
@@ -16,4 +17,5 @@ module.exports = (app) => {
    MarcaRoute(app)
    VendaRoute(app)
    CompraRoute(app)
+   ContasReceberRoute(app)
 }
