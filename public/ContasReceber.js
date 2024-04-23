@@ -26,31 +26,38 @@ function novo() {
     //abre a dialog
     modal.show();
 }
+
 function alterar(id) {
     idatual = id;
 
     fetch("http://127.0.0.1:3333/contasreceber/" + id)
     .then(resp => resp.json())
     .then(dados => {
- 
-
         const txtdata = document.getElementById("txtdata");
         const txtvalor = document.getElementById("txtvalor");
         const txtvencimento = document.getElementById("txtvencimento");
         const txtpagamento = document.getElementById("txtpagamento");
         const txtvalorpago = document.getElementById("txtvalorpago");
 
+        const data = new Date(dados.data);
+        const dataFormatada = data.toLocaleDateString('pt-BR');
 
-        txtdata.value = dados.data;
+        const vencimento = new Date(dados.vencimento);
+        const vencimentoFormatada = vencimento.toLocaleDateString('pt-BR');
+
+        const pagamento = new Date(dados.pagamento);
+        const pagamentoFormatada = pagamento.toLocaleDateString('pt-BR');
+
+        txtdata.value = dataFormatada; 
         txtvalor.value = dados.valor;
-        txtvencimento.value = dados.vencimento;
-        txtpagamento.value = dados.pagamento;
+        txtvencimento.value = vencimentoFormatada;
+        txtpagamento.value = pagamentoFormatada;
         txtvalorpago.value = dados.valorpago;
 
-        
         modal.show();
     });
 }
+
 function listar() {
     const lista = document.getElementById("lista");
     lista.innerHTML = "<tr><td colspan=5>Carregando...</td></tr>";
@@ -68,14 +75,24 @@ function mostrar(dados) {
 
     for (var i in dados) {
         let id = dados[i].idreceber;
+
+ 
+        const data = new Date(dados[i].data);
+        const dataFormatada = data.toLocaleDateString('pt-BR');
+
+        const vencimento = new Date(dados[i].vencimento);
+        const vencimentoFormatada = vencimento.toLocaleDateString('pt-BR');
+
+        const pagamento = new Date(dados[i].pagamento);
+        const pagamentoFormatada = pagamento.toLocaleDateString('pt-BR');
+
         lista.innerHTML += "<tr>"
             + "<td>" + id + "</td>"
-            + "<td>" + dados[i].data + "</td>"
+            + "<td>" + dataFormatada + "</td>" 
             + "<td>" + dados[i].valor + "</td>"
-            + "<td>" + dados[i].vencimento + "</td>"
-            + "<td>" + dados[i].pagamento + "</td>"
+            + "<td>" + vencimentoFormatada + "</td>" 
+            + "<td>" + pagamentoFormatada + "</td>" 
             + "<td>" + dados[i].valorpago + "</td>"
-
             + "<td>"
             + "<button type='button' class='btn btn-primary' "
             + " onclick='alterar("+id+")'>Alterar</button>"
@@ -85,6 +102,7 @@ function mostrar(dados) {
             + "</tr>";
     }
 }
+
 function excluir(id) {
     idatual = id;
     modalExcluir.show();
