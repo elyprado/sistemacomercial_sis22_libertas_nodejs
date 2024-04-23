@@ -91,11 +91,13 @@ function mostrar(dados) {
             + "<td>" + vencimentoFormatada + "</td>" 
             + "<td>" + pagamentoFormatada + "</td>" 
             + "<td>" + dados[i].valorpago + "</td>"
-            + "<td>"
-            + "<button type='button' class='btn btn-primary' "
-            + " onclick='alterar("+id+")'>Alterar</button>"
-            + "<button type='button' class='btn btn-danger' "
-            + " onclick='excluir("+id+")'>Excluir</button>"
+            +"<td>"
+            + "<button type='button' class='btn btn-primary' onclick='alterar(" + id + ")'>"
+            + "<i class='bi bi-pencil'></i>" 
+            + "</button>"+"&nbsp;"
+            + "<button type='button' class='btn btn-danger' onclick='excluir(" + id + ")'>"
+            + "<i class='bi bi-trash'></i>"
+            + "</button>"
             + "</td>"
             + "</tr>";
     }
