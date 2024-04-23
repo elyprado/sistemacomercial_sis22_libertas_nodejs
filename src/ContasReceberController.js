@@ -64,7 +64,7 @@ exports.get = async (req, res, next) => {
     const conn = await connect();
     const pesquisa = req.query.pesquisa;
     const sql = "SELECT * FROM conta_receber " +
-        " WHERE idreceber like ?" +
+        " WHERE valor like ?" +
         " ORDER BY valor";
     const values = ["%" + pesquisa + "%"];
     const [rows] = await conn.query(sql, values);
