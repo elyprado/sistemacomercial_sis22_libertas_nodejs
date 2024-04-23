@@ -68,7 +68,7 @@ function mostrar(dados) {
             + "<td>" + id + "</td>"
             + "<td>" + dataFormatada + "</td>"
             + "<td>" + dados[i].descricao + "</td>"
-            + "<td>" + dados[i].valor + "</td>"
+            + "<td>R$ " + dados[i].valor + "</td>"
             + "<td>" + dados[i].debitocredito + "</td>"
 
             + "<td>"
