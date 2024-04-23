@@ -126,18 +126,7 @@ async function salvar() {
 
     const txtpesquisa = document.getElementById("txtpesquisa");
 
-    var idNovo = 0
-    var todosCl = await fetch("http://127.0.0.1:3333/cliente?pesquisa=" + txtpesquisa.value)
-        .then(async (resp) => { return await resp.json() })
-
-    for (i of todosCl) {
-        if (i.idcliente > idNovo) {
-            idNovo = i.idcliente + 1
-        }
-    }
-
     const dados = {
-        idcliente: idNovo,
         nome: txtnome.value,
         cpf: txtcpf.value,
         logradouro: txtlogradouro.value,
