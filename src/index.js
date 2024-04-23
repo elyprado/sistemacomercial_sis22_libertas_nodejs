@@ -1,4 +1,5 @@
 //index.js
+const ContasaPagarRoute = require('./ContasapagarRoute')
 const UsuarioRoute = require('./UsuarioRoute');
 const VendedorRoute = require('./VendedorRoute');
 const ProdutoRoute = require('./ProdutoRoute');
@@ -22,4 +23,5 @@ module.exports = (app) => {
    ContasReceberRoute(app)
    FornecedorRoute(app)
    CidadeRoute(app)
+   ContasaPagarRoute(app)
 }
