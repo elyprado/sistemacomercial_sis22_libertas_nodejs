@@ -9,6 +9,7 @@ const CaixaRoute = require('./CaixaRoute');
 const ClienteRoute = require('./ClienteRoute');
 const ContasReceberRoute = require('./ContasReceberRoute')
 const FornecedorRoute = require('./FornecedorRoute');
+const CidadeRoute = require('./CidadeRoute');
 module.exports = (app) => {
    ClienteRoute(app)
    UsuarioRoute(app)
@@ -20,4 +21,5 @@ module.exports = (app) => {
    CompraRoute(app)
    ContasReceberRoute(app)
    FornecedorRoute(app)
+   CidadeRoute(app)
 }
