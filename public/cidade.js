@@ -82,9 +82,9 @@ function mostrar(dados) {
             + "<td>" + dados[i].longitude + "</td>"
             + "<td>"
             + "<button type='button' class='btn btn-primary' "
-            + " onclick='alterar("+id+")'>Alterar</button>"
+            + " onclick='alterar("+id+")'>🖉</button>"
             + "<button type='button' class='btn btn-danger' "
-            + " onclick='excluir("+id+")'>Excluir</button>"
+            + " onclick='excluir("+id+")'>🗑️</button>"
             + "</td>"
             + "</tr>";
     }
