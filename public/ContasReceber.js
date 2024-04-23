@@ -33,30 +33,24 @@ function alterar(id) {
     fetch("http://127.0.0.1:3333/contasreceber/" + id)
     .then(resp => resp.json())
     .then(dados => {
+        console.log("Dados brutos recebidos para alteração:", dados);
+        
         const txtdata = document.getElementById("txtdata");
         const txtvalor = document.getElementById("txtvalor");
         const txtvencimento = document.getElementById("txtvencimento");
         const txtpagamento = document.getElementById("txtpagamento");
         const txtvalorpago = document.getElementById("txtvalorpago");
 
-        const data = new Date(dados.data);
-        const dataFormatada = data.toLocaleDateString('pt-BR');
-
-        const vencimento = new Date(dados.vencimento);
-        const vencimentoFormatada = vencimento.toLocaleDateString('pt-BR');
-
-        const pagamento = new Date(dados.pagamento);
-        const pagamentoFormatada = pagamento.toLocaleDateString('pt-BR');
-
-        txtdata.value = dataFormatada; 
+        txtdata.value = new Date(dados.data).toISOString().split('T')[0];
         txtvalor.value = dados.valor;
-        txtvencimento.value = vencimentoFormatada;
-        txtpagamento.value = pagamentoFormatada;
+        txtvencimento.value = new Date(dados.vencimento).toISOString().split('T')[0];
+        txtpagamento.value = new Date(dados.pagamento).toISOString().split('T')[0];
         txtvalorpago.value = dados.valorpago;
 
         modal.show();
     });
 }
+
 
 function listar() {
     const lista = document.getElementById("lista");
@@ -67,8 +61,12 @@ function listar() {
 
     fetch("http://127.0.0.1:3333/contasreceber?pesquisa=" + txtpesquisa.value)
     .then(resp => resp.json())
-    .then(dados => mostrar(dados));
+    .then(dados => {
+        console.log("Dados brutos recebidos do servidor:", dados);
+        mostrar(dados);
+});
 }
+
 function mostrar(dados) {
     const lista = document.getElementById("lista");
     lista.innerHTML = "";
