@@ -29,7 +29,7 @@ function novo() {
 function alterar(id) {
     idatual = id;
 
-    fetch("http://127.0.0.1:3333/contasReceber/" + id)
+    fetch("http://127.0.0.1:3333/contasreceber/" + id)
     .then(resp => resp.json())
     .then(dados => {
  
@@ -58,7 +58,7 @@ function listar() {
     const txtpesquisa = document.getElementById("txtpesquisa");
 
 
-    fetch("http://127.0.0.1:3333/contasReceber?pesquisa=" + txtpesquisa.value)
+    fetch("http://127.0.0.1:3333/contasreceber?pesquisa=" + txtpesquisa.value)
     .then(resp => resp.json())
     .then(dados => mostrar(dados));
 }
@@ -67,7 +67,7 @@ function mostrar(dados) {
     lista.innerHTML = "";
 
     for (var i in dados) {
-        let id = dados[i].idcliente;
+        let id = dados[i].idreceber;
         lista.innerHTML += "<tr>"
             + "<td>" + id + "</td>"
             + "<td>" + dados[i].data + "</td>"
@@ -90,7 +90,7 @@ function excluir(id) {
     modalExcluir.show();
 }
 function excluirSim() {
-    fetch("http://127.0.0.1:3333/contasReceber/" + idatual,
+    fetch("http://127.0.0.1:3333/contasreceber/" + idatual,
         {
             headers: {
                 'Accept': 'application/json',
@@ -126,10 +126,10 @@ function salvar() {
     var url;
     var metodo;
     if (idatual<=0) {
-        url = "http://127.0.0.1:3333/contasReceber";
+        url = "http://127.0.0.1:3333/contasreceber";
         metodo = "POST";
     } else {
-        url = "http://127.0.0.1:3333/contasReceber/" + idatual;
+        url = "http://127.0.0.1:3333/contasreceber/" + idatual;
         metodo = "PUT";
     }
     fetch(url,

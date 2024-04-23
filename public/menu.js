@@ -15,7 +15,7 @@ menu.innerHTML = `<div class="dropdown">
 <li><a class="dropdown-item" href="venda.html">Venda	</a></li>
 <li><a class="dropdown-item" href="compra.html">Compra	</a></li>
 <li><a class="dropdown-item" href="caixa.html">Caixa</a></li>
-<li><a class="dropdown-item" href="ContasReceber.html">Contas a Receber	</a></li>
+<li><a class="dropdown-item" href="contasreceber.html">Contas a Receber	</a></li>
 <li><a class="dropdown-item" href="contasapagar.html">Contas a Pagar</a></li>
     </ul>
     </div>`;

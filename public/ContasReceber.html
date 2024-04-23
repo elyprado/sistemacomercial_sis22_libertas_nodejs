@@ -48,7 +48,7 @@
 
         <table class="table table-hover">
             <thead>
-                <th>Id</th>
+                <th>IdReceber</th>
                 <th>Data</th>
                 <th>Valor</th>
                 <th>Vencimento</th>
@@ -77,30 +77,31 @@ aria-hidden="true">
           <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
         </div>
         <div class="modal-body">
-            <div class="input-group mb-3">
-                <span class="input-group-text" id="basic-addon1">Data:</span>
-                <input type="text" class="form-control" 
-                id="txtdata" aria-label="Username" aria-describedby="basic-addon1">
-            </div>
+          
+          <div class="input-group mb-3">
+            <span class="input-group-text" id="basic-addon1">Data:</span>
+            <input type="date" class="form-control" id="txtdata" aria-label="Data" aria-describedby="basic-addon1">
+        </div>
+        
             <div class="input-group mb-3">
                 <span class="input-group-text" id="basic-addon1">Valor:</span>
                 <input type="text" class="form-control" 
-                id="txttelefone" aria-label="Username" aria-describedby="basic-addon1">
+                id="txtvalor" aria-label="Username" aria-describedby="basic-addon1">
             </div>
             <div class="input-group mb-3">
                 <span class="input-group-text" id="basic-addon1">Vencimento:</span>
-                <input type="text" class="form-control" 
-                id="txtemail" aria-label="Username" aria-describedby="basic-addon1">
+                <input type="date" class="form-control" 
+                id="txtvencimento" aria-label="Vencimento" aria-describedby="basic-addon1">
             </div>
             <div class="input-group mb-3">
                 <span class="input-group-text" id="basic-addon1">Pagamento:</span>
-                <input type="password" class="form-control" 
-                id="txtsenha" aria-label="Username" aria-describedby="basic-addon1">
+                <input type="date" class="form-control" 
+                id="txtpagamento" aria-label="Pagamento" aria-describedby="basic-addon1">
             </div>
             <div class="input-group mb-3">
                 <span class="input-group-text" id="basic-addon1">Valor Pago:</span>
-                <input type="password" class="form-control" 
-                id="txtsenha" aria-label="Username" aria-describedby="basic-addon1">
+                <input type="text" class="form-control" 
+                id="txtvalorpago" aria-label="Username" aria-describedby="basic-addon1">
             </div>
 
 
@@ -141,7 +142,7 @@ aria-hidden="true">
   </div>
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
-    <script src="ContasReceber.js"></script>
+    <script src="contasreceber.js"></script>
     <script src="menu.js"></script>
 
 
