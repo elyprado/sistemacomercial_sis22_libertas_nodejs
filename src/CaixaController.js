@@ -17,9 +17,10 @@ exports.post = async (req, res, next) => {
     const conn = await connect();
     const sql = "INSERT INTO caixa " +
         " (data, descricao, valor, debitocredito) " +
-        " VALUES (?, ?, ?, ?)";
+        " VALUES (?,?,?, ?)";
     const values = [req.body.data, req.body.descricao,
-    req.body.valor, req.body.debitocred];
+    req.body.valor, req.body.debitocredito];
+    console.log(values)
     await conn.query(sql, values);
     res.status(201).send('Rota POST!');
 };
@@ -28,10 +29,10 @@ exports.put = async (req, res, next) => {
     let id = req.params.id;
     const conn = await connect();
     const sql = "UPDATE caixa " +
-        " SET data = ?, descricao = ?, valor = ?, debitocred =?" +
-        " WHERE idproduto = ?";
+        " SET data = ?, descricao = ?, valor = ?, debitocredito =?" +
+        " WHERE idcaixa = ?";
     const values = [req.body.data, req.body.descricao,
-    req.body.valor, req.body.debitocred];
+    req.body.valor, req.body.debitocredito, id];
     await conn.query(sql, values);
     res.status(201).send(`Rota PUT com ID! ${id}`);
 };

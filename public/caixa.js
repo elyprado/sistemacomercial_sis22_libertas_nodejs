@@ -26,24 +26,25 @@ function novo() {
 function alterar(id) {
     idatual = id;
 
-    fetch("http://127.0.0.1:3333/cliente/" + id)
+    fetch("http://127.0.0.1:3333/caixa/" + id)
         .then(resp => resp.json())
         .then(dados => {
-
-
             const txtdata = document.getElementById("txtdata");
             const txtdescricao = document.getElementById("txtdescricao");
             const txtvalor = document.getElementById("txtvalor");
             const txtdebitocred = document.getElementById("txtdebitocred");
 
+            let data = new Date(dados.data);
+            let dataFormatada = data.toLocaleDateString('pt-BR'); // Formata a data para o formato 'DD/MM/YYYY'
 
-            txtdata.value = dados.data;
+            txtdata.value = dataFormatada;
             txtdescricao.value = dados.descricao;
             txtvalor.value = dados.valor;
-            txtdebitocred.value = dados.debitocred;
+            txtdebitocred.value = dados.debitocredito;
             modal.show();
         });
 }
+
 function listar() {
     const lista = document.getElementById("lista");
     lista.innerHTML = "<tr><td colspan=5>Carregando...</td></tr>";
@@ -61,12 +62,14 @@ function mostrar(dados) {
 
     for (var i in dados) {
         let id = dados[i].idcaixa;
+        let data = new Date(dados[i].data);
+        let dataFormatada = data.toLocaleDateString('pt-BR'); // Formata a data para o formato 'DD/MM/YYYY'
         lista.innerHTML += "<tr>"
             + "<td>" + id + "</td>"
-            + "<td>" + dados[i].data + "</td>"
+            + "<td>" + dataFormatada + "</td>"
             + "<td>" + dados[i].descricao + "</td>"
             + "<td>" + dados[i].valor + "</td>"
-            + "<td>" + dados[i].debitocred + "</td>"
+            + "<td>" + dados[i].debitocredito + "</td>"
 
             + "<td>"
             + "<button type='button' class='btn btn-primary' "
@@ -77,6 +80,7 @@ function mostrar(dados) {
             + "</tr>";
     }
 }
+
 function excluir(id) {
     idatual = id;
     modalExcluir.show();
@@ -105,26 +109,29 @@ function salvar() {
     const txtpesquisa = document.getElementById("txtpesquisa");
 
     var idNovo = 0
-    var todosCl = fetch("http://127.0.0.1:3333/cliente?pesquisa=" + txtpesquisa.value)
+    var todosCl = fetch("http://127.0.0.1:3333/caixa?pesquisa=" + txtpesquisa.value)
         .then(async (resp) => { return await resp.json() })
-
-        
+    console.log('ENTRO AQUI')
     if (todosCl.lenght > 0) {
         for (i of todosCl) {
-            if (i.idcliente > idNovo) {
-                idNovo = i.idcliente + 1
+            if (i.idcaixa > idNovo) {
+                idNovo = i.idcaixa + 1
             }
         }
     } else {
         idNovo = 1
     }
 
+    // Parsing da data para garantir que seja uma data válida
+    const dataParts = txtdata.value.split('/');
+    const dataFormatada = new Date(dataParts[2], dataParts[1] - 1, dataParts[0]).toISOString().split('T')[0];
+
     const dados = {
-        data: txtdata.value,
+        idcaixa: idNovo,
+        data: dataFormatada,
         descricao: txtdescricao.value,
         valor: txtvalor.value,
-        debitocred: txtdebitocred.value,
-
+        debitocredito: txtdebitocred.value,
     }
     var url;
     var metodo;
@@ -148,7 +155,7 @@ function salvar() {
         modal.hide();
         listar();
     })
-
 }
+
 
 listar();
