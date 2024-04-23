@@ -130,14 +130,10 @@ async function salvar() {
     var todosCl = await fetch("http://127.0.0.1:3333/cliente?pesquisa=" + txtpesquisa.value)
         .then(async (resp) => { return await resp.json() })
 
-    if (todosCl.length > 0) {
-        for (i of todosCl) {
-            if (i.idcliente > idNovo) {
-                idNovo = i.idcliente + 1
-            }
+    for (i of todosCl) {
+        if (i.idcliente > idNovo) {
+            idNovo = i.idcliente + 1
         }
-    } else {
-        idNovo = 1
     }
 
     const dados = {
