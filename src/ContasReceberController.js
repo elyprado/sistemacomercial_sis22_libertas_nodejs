@@ -41,7 +41,8 @@ exports.put = async (req, res, next) => {
         req.body.vencimento,
         req.body.pagamento,
         req.body.valorpago,
-        req.body.idcliente
+        req.body.idcliente,
+        id
     ];
     await conn.query(sql, values);
     res.status(201).send(`Rota PUT com ID! ${id}`);
