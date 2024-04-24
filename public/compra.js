@@ -122,7 +122,7 @@ function salvar() {
 
     const dados = {
         numeronf: txtnumeronf.value,
-        data: txtquantidade.value,
+        data: txtdata.value,
         valor: txtvalor.value, 
         quantidade: txtquantidade.value,
         idfornecedor: txtidfornecedor.value, 

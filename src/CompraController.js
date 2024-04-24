@@ -22,16 +22,23 @@ async function connect(){
  };
  
  exports.put = async (req, res, next) => {
-    let id = req.params.id;
-    const conn = await connect();
-    const sql = "UPDATE compra " +
-                " SET numeronf = ?, data = ?, quantidade = ?, valor =?, idproduto = ?, idfornecedor = ? " +
-                " WHERE idcompra = ?";
-    const values = [req.body.numeronf, req.data, 
-       req.body.quantidade, req.body.valor, req.body.idproduto, req.body.idfornecedor];
-    await conn.query(sql, values);
-    res.status(201).send(`Rota PUT com ID! ${id}`);
-  };
+   let id = req.params.id;
+   const conn = await connect();
+   const sql = "UPDATE compra " +
+               " SET numeronf = ?, data = ?, quantidade = ?, valor = ?, idproduto = ?, idfornecedor = ? " +
+               " WHERE idcompra = ?";
+   const values = [
+       req.body.numeronf,
+       req.body.data, 
+       req.body.quantidade,
+       req.body.valor,
+       req.body.idproduto,
+       req.body.idfornecedor,
+       id
+   ];
+   await conn.query(sql, values);
+   res.status(201).send(`Rota PUT com ID! ${id}`);
+};
  
   exports.delete = async (req, res, next) => {
     let id = req.params.id;
@@ -47,7 +54,7 @@ async function connect(){
      const conn = await connect();
      const pesquisa = req.query.pesquisa;
      const sql = "SELECT * FROM compra " +
-                 " WHERE numero nf like ?" +
+                 " WHERE numeronf like ?" +
                  " ORDER BY numeronf";
      const values = ["%" + pesquisa + "%"];
      const [rows] = await conn.query(sql, values);
