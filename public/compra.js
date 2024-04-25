@@ -12,8 +12,8 @@ function novo() {
     const txtdata = document.getElementById("txtdata");
     const txtquantidade = document.getElementById("txtquantidade");
     const txtvalor = document.getElementById("txtvalor");
-    const txtidfornecedor = document.getElementById("txtidfornecedor");
-    const txtidproduto = document.getElementById("txtidproduto");
+    const idfornecedor = document.getElementById("idfornecedor");
+    const idproduto = document.getElementById("idproduto");
      
 
     //limpa os campo
@@ -21,8 +21,8 @@ function novo() {
     txtdata.value = "";
     txtquantidade.value = "";
     txtvalor.value = "";
-    txtidfornecedor.value = "";
-    txtidproduto.value = "";
+    idfornecedor.value = "";
+    idproduto.value = "";
 
     //abre a dialog
     modal.show();
@@ -38,16 +38,16 @@ function alterar(id) {
         const txtdata = document.getElementById("txtdata");
         const txtquantidade = document.getElementById("txtquantidade");
         const txtvalor = document.getElementById("txtvalor");
-        const txtidfornecedor = document.getElementById("txtidfornecedor");
-        const txtidproduto = document.getElementById("txtidproduto");
+        const idfornecedor = document.getElementById("idfornecedor");
+        const idproduto = document.getElementById("idproduto");
          
 
         txtnumeronf.value = dados.numeronf;
         txtdata.value = dados.data;
         txtquantidade.value = dados.quantidade;
         txtvalor.value = dados.valor;
-        txtidfornecedor.value = dados.idfornecedor;
-        txtidproduto.value = dados.idproduto;
+        idfornecedor.value = dados.idfornecedor;
+        idproduto.value = dados.idproduto;
         
 
         //mostra a dialog para alterar
@@ -77,7 +77,7 @@ function mostrar(dados) {
             + "<td>" + dados[i].numeronf + "</td>"
             + "<td>" + dados[i].data + "</td>"
             + "<td>" + dados[i].quantidade + "</td>"
-            + "<td>" + dados[i].valor + "</td>"
+            + "<td>" +"R$ " + dados[i].valor + "</td>"
             + "<td>" + dados[i].idfornecedor + "</td>"
             + "<td>" + dados[i].idproduto + "</td>"
             + "<td>"
@@ -116,8 +116,8 @@ function salvar() {
         const txtdata = document.getElementById("txtdata");
         const txtquantidade = document.getElementById("txtquantidade");
         const txtvalor = document.getElementById("txtvalor");
-        const txtidfornecedor = document.getElementById("txtidfornecedor");
-        const txtidproduto = document.getElementById("txtidproduto");       
+        const idfornecedor = document.getElementById("idfornecedor");
+        const idproduto = document.getElementById("idproduto");       
 
 
     const dados = {
@@ -125,8 +125,8 @@ function salvar() {
         data: txtdata.value,
         valor: txtvalor.value, 
         quantidade: txtquantidade.value,
-        idfornecedor: txtidfornecedor.value, 
-        idproduto: txtidproduto.value
+        idfornecedor: idfornecedor.value, 
+        idproduto: idproduto.value
     }
 
     var url;
@@ -159,4 +159,3 @@ function salvar() {
 }
 
 listar();
-
